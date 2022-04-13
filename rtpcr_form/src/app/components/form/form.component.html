@@ -1,0 +1,162 @@
+<header id="head">
+  <h1>RT-PCR Registeration Form</h1>
+</header>
+
+<main id="main">
+  <form [formGroup]="registerForm" (ngSubmit)="resSubmit()">
+    <div class="input">
+      <label for="name">Person Name <span>*</span></label>
+      <input
+        type="text"
+        placeholder="Enter your name here"
+        id="name"
+        name="person_name"
+        formControlName="name"
+      />
+    </div>
+
+    <div class="input">
+      <label for="adr no">Adhaar card No <span>*</span></label>
+      <input
+        type="text"
+        placeholder="Enter your Adhaar no here"
+        id="adrno"
+        name="adhaar_no"
+        formControlName="adrno"
+      />
+    </div>
+
+    <div class="input">
+      <label for="dob">Date of Birth <span>*</span></label>
+      <input type="date" id="dob" name="dob" formControlName="dob" />
+    </div>
+
+    <div class="input">
+      <label for="city">City <span>*</span></label>
+      <input
+        type="text"
+        placeholder="Enter your City name here"
+        id="city"
+        name="city"
+        formControlName="city"
+      />
+    </div>
+
+    <div class="input">
+      <label for="dtest">Date of Test</label>
+      <input
+        type="date"
+        id="dtest"
+        name="Date_of_test"
+        formControlName="dtest"
+      />
+    </div>
+
+    <div class="input">
+      <label for="ttst">Time of Test</label>
+      <input
+        type="time"
+        id="ttest"
+        name="time_of_test"
+        formControlName="ttest"
+      />
+    </div>
+
+    <div class="input">
+      <label for="result">Result</label>
+      <select name="result" id="res" formControlName="res">
+        <option value="default">Select</option>
+        <option value="positive">Positive</option>
+        <option value="negative">Negative</option>
+      </select>
+    </div>
+
+    <div class="input">
+      <label for="lname">Lab Name</label>
+      <input type="text" id="lname" name="lab_name" formControlName="lname" />
+    </div>
+
+    <div class="input">
+      <label for="report">Report no</label>
+      <input
+        type="text"
+        id="report"
+        name="report_no"
+        formControlName="report"
+      />
+    </div>
+
+    <div class="radio">
+      <label for="gender">Gender</label>
+
+      <div>
+        <input
+          type="radio"
+          name="gender"
+          id="male"
+          value="male"
+          formControlName="gender"
+        />
+        <label for="male">Male</label>
+      </div>
+
+      <div>
+        <input
+          type="radio"
+          name="gender"
+          id="female"
+          value="female"
+          formControlName="gender"
+        />
+        <label for="female">Female</label>
+      </div>
+    </div>
+
+    <input
+      type="submit"
+      class="btn"
+      id="btnsub"
+      value="submit"
+      (click)="add()"
+    />
+  </form>
+</main>
+
+<div class="topic">RT-PCR Registeration Records</div>
+
+<div class="add">
+  <input type="button" value="Apply for RT-PCR Test" onclick="show()" />
+</div>
+
+<div class="table">
+  <input
+    type="search"
+    id="myInput"
+    onkeyup="tableSearch()"
+    placeholder="Aadhaar card no"
+  />
+  <input type="button" value="search" />
+</div>
+
+<div class="history-container">
+  <table id="myTable">
+    <tr>
+      <th *ngFor="let column of headers">
+        {{ column }}
+      </th>
+    </tr>
+
+    <tr *ngFor="let value of store">
+      <td>{{ value.name }}</td>
+      <td>{{ value.adrno }}</td>
+      <td>{{ value.dob }}</td>
+      <td>{{ value.city }}</td>
+      <td>{{ value.dtest }}</td>
+      <td>{{ value.ttest }}</td>
+      <td>{{ value.gender }}</td>
+      <td>{{ value.lname }}</td>
+      <td>{{ value.report }}</td>
+      <td>{{ value.res }}</td>
+    </tr>
+  </table>
+</div>
